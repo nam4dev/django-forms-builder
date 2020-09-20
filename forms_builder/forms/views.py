@@ -10,7 +10,13 @@ except ImportError:
     # For Django 1.8 compatibility
     from django.core.urlresolvers import reverse
 from django.http import HttpResponse, HttpResponseBadRequest
-from django.shortcuts import get_object_or_404, redirect, render_to_response
+
+try:
+    from django.shortcuts import render_to_response
+except ImportError:
+    from django.shortcuts import render as render_to_response
+
+from django.shortcuts import get_object_or_404, redirect
 from django.template import RequestContext
 from django.utils.http import urlquote
 from django.views.generic.base import TemplateView
